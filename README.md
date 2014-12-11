@@ -16,6 +16,7 @@ MENT is a set of tools for lossless compression of microarray images. These tool
 
 * **BOSC09MixSBC** (Bitplane decOmpoSition Compressor 2009 Mixture with Simple Bitplane Coding) - Tool based on a mixture of finite-context models. In this particular case, we only considered two different models. The first one used by Neves and Pinho ([Neves 2009](http://dx.doi.org/10.1109/TMI.2008.929095)) and the other one is based on Simple Bitplane Coding inpired on Kikuchi's work ([Kikuchi 2009](http://dx.doi.org/10.1109/PCS.2009.5167351), [Kikuchi 2012](http://doi.org/10.1587/transfun.E95.A.938)). 
 
+* **BITTOC** (Binary Tree decomposiTiOn Compressor) - Tool inspired on Chen's work regarding compression of color-quantized images ([Chen 2002](http://dx.doi.org/10.1109/TCSVT.2002.804896)). This tool performance was studied in the context of medical images by Pinho and Neves in 2009 ([Pinho 2009](http://dx.doi.org/10.1109/ICASSP.2009.4959607)) and more recently applied to microarray images ([Matos 2014](http://doi.org/10.13140/2.1.1980.5761)).
 
 # CITE #
 If you use some tool from MENT, please cite the following publications:
