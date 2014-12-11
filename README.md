@@ -12,9 +12,9 @@ MENT is a set of tools for lossless compression of microarray images. These tool
 
 * **BOSC09SBR** (Bitplane decOmpoSition Compressor 2009 using Scalable Bitplane Reduction) - Tool inspired on method introduced by ([Neves 2009](http://dx.doi.org/10.1109/TMI.2008.929095)) where it was added an Scalable Bitplane Reduction unit in order to remove some redundant bitplanes. The Scalable Bitplane Reduction technique was first introduced by [Yoo 1999](http://dx.doi.org/10.1109/ICIP.1999.821655).
 
-* **SBC** (Simple Bitplane Coding) - Tool inspired on several Kikuchi's works ([Kikuchi 2009](http://dx.doi.org/10.1109/PCS.2009.5167351), [Kikuchi 2012](http://doi.org/10.1587/transfun.E95.A.938)). 
+* **SBC** (Simple Bitplane Coding) - Tool inspired on one of Kikuchi's work ([Kikuchi 2009](http://dx.doi.org/10.1109/PCS.2009.5167351), [Kikuchi 2012](http://doi.org/10.1587/transfun.E95.A.938)). 
 
-* **BOSC09MixSBC** (Bitplane decOmpoSition Compressor 2009 Mixture with Simple Bitplane Coding) - Tool based on a mixture of finite-context models. In this particular case, we only considered two different models. The first one used by Neves and Pinho ([Neves 2009](http://dx.doi.org/10.1109/TMI.2008.929095)) and the other one is based on Simple Bitplane Coding inpired on Kikuchi's work ([Kikuchi 2009](http://dx.doi.org/10.1109/PCS.2009.5167351), [Kikuchi 2012](http://doi.org/10.1587/transfun.E95.A.938)). 
+* **BOSC09MixSBC** (Bitplane decOmpoSition Compressor 2009 Mixture with Simple Bitplane Coding) - Tool based on a mixture of finite-context models. In this particular case, we only considered two different models. The first one used by Neves and Pinho ([Neves 2009](http://dx.doi.org/10.1109/TMI.2008.929095)) and the other one based on a Simple Bitplane Coding inspired on Kikuchi's work ([Kikuchi 2009](http://dx.doi.org/10.1109/PCS.2009.5167351), [Kikuchi 2012](http://doi.org/10.1587/transfun.E95.A.938)). 
 
 * **BITTOC** (Binary Tree decomposiTiOn Compressor) - Tool inspired on Chen's work regarding compression of color-quantized images ([Chen 2002](http://dx.doi.org/10.1109/TCSVT.2002.804896)). This tool performance was studied in the context of medical images by Pinho and Neves in 2009 ([Pinho 2009](http://dx.doi.org/10.1109/ICASSP.2009.4959607)) and more recently applied to microarray images ([Matos 2014](http://doi.org/10.13140/2.1.1980.5761)).
 
@@ -163,7 +163,7 @@ are not available in their original location anymore. We decided then to upload 
         </tr>
         <tr> 
           <!-- <td width="23%" align="center">[YuLou] [1]</td> -->
-           <td width="23%" align="center">YuLou or MicroZip</td>
+          <td width="23%" align="center">YuLou or MicroZip</td>
           <td width="20%" align="center">3</td>
           <td width="15%" align="center">40.7 MB</td>
           <td width="17%" align="center"><a href="https://drive.google.com/file/d/0BzRzvourNTdhSmZ4MFNwMXVxZVk/edit?usp=sharing" target="_blank">download</a></td>
