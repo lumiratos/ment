@@ -1,0 +1,150 @@
+BIN_DIR = ./bin/linux
+SRC_DIR = ./src
+OBJS_DIR = ./objs/linux
+CC = gcc
+
+CFLAGS = -O2 -Wall
+CFLAGS2 = -O2 -Wall -pedantic
+CFLAGS3 = -O3 -Wall
+
+LIBS = -lm
+DEPS = $(SRC_DIR)/defs.h
+
+PROGS = BOSC06e BOSC06d BOSC09e BOSC09d \
+	BOSC09HCe BOSC09HCd \
+	BOSC09SBRe BOSC09SBRd \
+	BOSC09BFSe BOSC09BFSd \
+	SBCe SBCd \
+	BOSC09MixSBCe BOSC09MixSBCd \
+	BITTOCe BITTOCd \
+	CmpImgs
+
+OBJS = $(OBJS_DIR)/bitio.o $(OBJS_DIR)/arith.o $(OBJS_DIR)/image.o \
+	$(OBJS_DIR)/complex.o $(OBJS_DIR)/matrix.o $(OBJS_DIR)/mtype.o
+OBJS06 = $(OBJS_DIR)/context95.o
+OBJS09 = $(OBJS_DIR)/arith_aux.o $(OBJS_DIR)/common.o $(OBJS_DIR)/context.o
+
+all: dir $(PROGS)
+
+dir:
+	@if [ ! -d $(OBJS_DIR) ];\
+        then\
+                mkdir $(OBJS_DIR);\
+        fi
+
+
+# Image independent encoder 2006
+BOSC06e: $(SRC_DIR)/BOSC06e.c $(OBJS) $(OBJS06) $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BOSC06e $(SRC_DIR)/BOSC06e.c $(OBJS) $(OBJS06) $(LIBS)
+
+# Image independent decoder 2006
+BOSC06d: $(SRC_DIR)/BOSC06d.c $(OBJS) $(OBJS06) $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BOSC06d $(SRC_DIR)/BOSC06d.c $(OBJS) $(OBJS06) $(LIBS)
+
+# Image dependent encoder 2009
+BOSC09e: $(SRC_DIR)/BOSC09e.c $(OBJS) $(OBJS09) $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BOSC09e $(SRC_DIR)/BOSC09e.c $(OBJS) $(OBJS09) $(LIBS)
+
+# Image dependent decoder 2009
+BOSC09d: $(SRC_DIR)/BOSC09d.c $(OBJS) $(OBJS09) $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BOSC09d $(SRC_DIR)/BOSC09d.c $(OBJS) $(OBJS09) $(LIBS)
+
+# Image dependent encoder 2009, with Histogram Compaction
+BOSC09HCe: $(SRC_DIR)/BOSC09HCe.c $(OBJS) $(OBJS09) $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BOSC09HCe $(SRC_DIR)/BOSC09HCe.c $(OBJS) $(OBJS09) $(LIBS)
+
+# Image dependent decoder 2009, with Histogram Compaction
+BOSC09HCd: $(SRC_DIR)/BOSC09HCd.c $(OBJS) $(OBJS09) $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BOSC09HCd $(SRC_DIR)/BOSC09HCd.c $(OBJS) $(OBJS09) $(LIBS)
+
+# Image dependent encoder 2009, with Scalable Bitplane Reduction
+BOSC09SBRe: $(SRC_DIR)/BOSC09SBRe.c $(OBJS) $(OBJS09) $(OBJS_DIR)/sbr.o $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BOSC09SBRe $(SRC_DIR)/BOSC09SBRe.c $(OBJS) $(OBJS09) $(OBJS_DIR)/sbr.o $(LIBS)
+
+# Image dependent decoder 2009, with Scalable Bitplane Reduction
+BOSC09SBRd: $(SRC_DIR)/BOSC09SBRd.c $(OBJS) $(OBJS09) $(OBJS_DIR)/sbr.o $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BOSC09SBRd $(SRC_DIR)/BOSC09SBRd.c $(OBJS) $(OBJS09) $(OBJS_DIR)/sbr.o $(LIBS)
+
+# Image dependent encoder 2009, with Segmentation
+BOSC09BFSe: $(SRC_DIR)/BOSC09BFSe.c $(OBJS) $(OBJS09) $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BOSC09BFSe $(SRC_DIR)/BOSC09BFSe.c $(OBJS) $(OBJS09) $(LIBS)
+
+# Image dependent decoder 2009, with Segmentation
+BOSC09BFSd: $(SRC_DIR)/BOSC09BFSd.c $(OBJS) $(OBJS09) $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BOSC09BFSd $(SRC_DIR)/BOSC09BFSd.c $(OBJS) $(OBJS09) $(LIBS)
+
+# Simple Bitplane Coding (Encoder)
+SBCe: $(SRC_DIR)/SBCe.c $(OBJS) $(OBJS09) $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/SBCe $(SRC_DIR)/SBCe.c $(OBJS) $(OBJS09) $(LIBS)
+
+# Simple Bitplane Coding (Decoder)
+SBCd: $(SRC_DIR)/SBCd.c $(OBJS) $(OBJS09) $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/SBCd $(SRC_DIR)/SBCd.c $(OBJS) $(OBJS09) $(LIBS)
+
+# Image dependent encododer mix with Simple Bitplane Coding (Encoder)
+BOSC09MixSBCe: $(SRC_DIR)/BOSC09MixSBCe.c $(OBJS) $(OBJS09) $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BOSC09MixSBCe $(SRC_DIR)/BOSC09MixSBCe.c $(OBJS) $(OBJS09) $(LIBS)
+
+# Image dependent decododer mix with Simple Bitplane Coding (Encoder)
+BOSC09MixSBCd: $(SRC_DIR)/BOSC09MixSBCd.c $(OBJS) $(OBJS09) $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BOSC09MixSBCd $(SRC_DIR)/BOSC09MixSBCd.c $(OBJS) $(OBJS09) $(LIBS)
+
+
+# L-Infinity Binary Tree Decomposition Encoder
+BITTOCe: $(SRC_DIR)/BITTOCe.c $(OBJS) $(OBJS09) $(OBJS_DIR)/linf.o $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BITTOCe $(SRC_DIR)/BITTOCe.c $(OBJS) $(OBJS09) $(OBJS_DIR)/linf.o $(LIBS)
+
+# L-Infinity Binary Tree Decomposition Decoder
+BITTOCd: $(SRC_DIR)/BITTOCd.c $(OBJS) $(OBJS09) $(OBJS_DIR)/linf.o $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BITTOCd $(SRC_DIR)/BITTOCd.c $(OBJS) $(OBJS09) $(OBJS_DIR)/linf.o $(LIBS)
+
+
+# A tool to compare two images
+CmpImgs: $(SRC_DIR)/CmpImgs.c $(OBJS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/CmpImgs $(SRC_DIR)/CmpImgs.c $(OBJS) $(LIBS)
+
+
+
+$(OBJS_DIR)/bitio.o: $(SRC_DIR)/bitio.h $(SRC_DIR)/bitio.c
+	$(CC) -c $(CFLAGS) -o $(OBJS_DIR)/bitio.o $(SRC_DIR)/bitio.c
+
+$(OBJS_DIR)/arith.o: $(SRC_DIR)/arith.h $(SRC_DIR)/arith.c
+	$(CC) -c $(CFLAGS) -o $(OBJS_DIR)/arith.o $(SRC_DIR)/arith.c
+
+$(OBJS_DIR)/image.o: $(SRC_DIR)/image.h $(SRC_DIR)/image.c
+	$(CC) -c $(CFLAGS2) -o $(OBJS_DIR)/image.o $(SRC_DIR)/image.c
+
+$(OBJS_DIR)/complex.o: $(SRC_DIR)/complex.h $(SRC_DIR)/complex.c
+	$(CC) -c $(CFLAGS2) -o $(OBJS_DIR)/complex.o $(SRC_DIR)/complex.c
+
+$(OBJS_DIR)/matrix.o: $(SRC_DIR)/matrix.h $(SRC_DIR)/matrix.c
+	$(CC) -c $(CFLAGS2) -o $(OBJS_DIR)/matrix.o $(SRC_DIR)/matrix.c
+
+$(OBJS_DIR)/mtype.o: $(SRC_DIR)/mtype.h $(SRC_DIR)/mtype.c
+	$(CC) -c $(CFLAGS2) -o $(OBJS_DIR)/mtype.o $(SRC_DIR)/mtype.c
+
+$(OBJS_DIR)/context95.o: $(SRC_DIR)/context95.h $(SRC_DIR)/context95.c
+	$(CC) -c $(CFLAGS2) -o $(OBJS_DIR)/context95.o $(SRC_DIR)/context95.c
+
+$(OBJS_DIR)/arith_aux.o: $(SRC_DIR)/arith_aux.h $(SRC_DIR)/arith_aux.c
+	$(CC) -c $(CFLAGS) -o $(OBJS_DIR)/arith_aux.o $(SRC_DIR)/arith_aux.c
+
+$(OBJS_DIR)/common.o: $(SRC_DIR)/common.h $(SRC_DIR)/common.c
+	$(CC) -c $(CFLAGS) -o $(OBJS_DIR)/common.o $(SRC_DIR)/common.c
+
+$(OBJS_DIR)/context.o: $(SRC_DIR)/context.h $(SRC_DIR)/context.c
+	$(CC) -c $(CFLAGS) -o $(OBJS_DIR)/context.o $(SRC_DIR)/context.c
+
+$(OBJS_DIR)/sbr.o: $(SRC_DIR)/sbr.h $(SRC_DIR)/sbr.c
+	$(CC) -c $(CFLAGS) -o $(OBJS_DIR)/sbr.o $(SRC_DIR)/sbr.c
+
+$(OBJS_DIR)/linf.o: $(SRC_DIR)/linf.h $(SRC_DIR)/linf.c
+	$(CC) -c $(CFLAGS) -o $(OBJS_DIR)/linf.o $(SRC_DIR)/linf.c
+
+
+clean:
+	/bin/rm -f $(OBJS_DIR)/*.o $(PROGS)
+
+clean-all:
+	/bin/rm -f $(OBJS_DIR)/*.o $(PROGS)
+	clear

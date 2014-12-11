@@ -1,0 +1,151 @@
+BIN_DIR = ./bin/win64
+SRC_DIR = ./src
+OBJS_DIR = ./objs/win64
+
+#CC = /usr/bin/i686-w64-mingw32-gcc # 32-bit Windows gcc
+CC = /usr/bin/x86_64-w64-mingw32-gcc # 64-bit Windows gcc
+
+FLAGS = -O2 -Wall
+CFLAGS2 = -O2 -Wall -pedantic
+CFLAGS3 = -O3 -Wall
+
+LIBS = -lm
+DEPS = $(SRC_DIR)/defs.h
+
+PROGS = BOSC06e64 BOSC06d64 BOSC09e64 BOSC09d64 \
+	BOSC09HCe64 BOSC09HCd64 \
+	BOSC09SBRe64 BOSC09SBRd64 \
+	BOSC09BFSe64 BOSC09BFSd64 \
+	SBCe64 SBCd64 \
+	BOSC09MixSBCe64 BOSC09MixSBCd64 \
+	BITTOCe64 BITTOCd64 \
+	CmpImgs64
+	
+
+OBJS = $(OBJS_DIR)/bitio.o $(OBJS_DIR)/arith.o $(OBJS_DIR)/image.o \
+	$(OBJS_DIR)/complex.o $(OBJS_DIR)/matrix.o $(OBJS_DIR)/mtype.o
+OBJS06 = $(OBJS_DIR)/context95.o
+OBJS09 = $(OBJS_DIR)/arith_aux.o $(OBJS_DIR)/common.o $(OBJS_DIR)/context.o
+
+
+all: dir $(PROGS)
+
+dir:
+	@if [ ! -d $(OBJS_DIR) ];\
+        then\
+                mkdir $(OBJS_DIR);\
+        fi
+
+# Image independent encoder 2006
+BOSC06e64: $(SRC_DIR)/BOSC06e.c $(OBJS) $(OBJS06) $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BOSC06e64.exe $(SRC_DIR)/BOSC06e.c $(OBJS) $(OBJS06) $(LIBS)
+
+# Image independent decoder 2006
+BOSC06d64: $(SRC_DIR)/BOSC06d.c $(OBJS) $(OBJS06) $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BOSC06d64.exe $(SRC_DIR)/BOSC06d.c $(OBJS) $(OBJS06) $(LIBS)
+
+# Image dependent encoder 2009
+BOSC09e64: $(SRC_DIR)/BOSC09e.c $(OBJS) $(OBJS09) $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BOSC09e64.exe $(SRC_DIR)/BOSC09e.c $(OBJS) $(OBJS09) $(LIBS)
+
+# Image dependent decoder 2009
+BOSC09d64: $(SRC_DIR)/BOSC09d.c $(OBJS) $(OBJS09) $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BOSC09d64.exe $(SRC_DIR)/BOSC09d.c $(OBJS) $(OBJS09) $(LIBS)
+
+# Image dependent encoder 2009, with Histogram Compaction
+BOSC09HCe64: $(SRC_DIR)/BOSC09HCe.c $(OBJS) $(OBJS09) $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BOSC09HCe64.exe $(SRC_DIR)/BOSC09HCe.c $(OBJS) $(OBJS09) $(LIBS)
+
+# Image dependent decoder 2009, with Histogram Compaction
+BOSC09HCd64: $(SRC_DIR)/BOSC09HCd.c $(OBJS) $(OBJS09) $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BOSC09HCd64.exe $(SRC_DIR)/BOSC09HCd.c $(OBJS) $(OBJS09) $(LIBS)
+
+# Image dependent encoder 2009, with Scalable Bitplane Reduction
+BOSC09SBRe64: $(SRC_DIR)/BOSC09SBRe.c $(OBJS) $(OBJS09) $(OBJS_DIR)/sbr.o $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BOSC09SBRe64.exe $(SRC_DIR)/BOSC09SBRe.c $(OBJS) $(OBJS09) $(OBJS_DIR)/sbr.o $(LIBS)
+
+# Image dependent decoder 2009, with Scalable Bitplane Reduction
+BOSC09SBRd64: $(SRC_DIR)/BOSC09SBRd.c $(OBJS) $(OBJS09) $(OBJS_DIR)/sbr.o $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BOSC09SBRd64.exe $(SRC_DIR)/BOSC09SBRd.c $(OBJS) $(OBJS09) $(OBJS_DIR)/sbr.o $(LIBS)
+
+# Image dependent encoder 2009, with Segmentation
+BOSC09BFSe64: $(SRC_DIR)/BOSC09BFSe.c $(OBJS) $(OBJS09) $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BOSC09BFSe64.exe $(SRC_DIR)/BOSC09BFSe.c $(OBJS) $(OBJS09) $(LIBS)
+
+# Image dependent decoder 2009, with Segmentation
+BOSC09BFSd64: $(SRC_DIR)/BOSC09BFSd.c $(OBJS) $(OBJS09) $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BOSC09BFSd64.exe $(SRC_DIR)/BOSC09BFSd.c $(OBJS) $(OBJS09) $(LIBS)
+
+# Simple Bitplane Coding (Encoder)
+SBCe64: $(SRC_DIR)/SBCe.c $(OBJS) $(OBJS09) $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/SBCe64.exe $(SRC_DIR)/SBCe.c $(OBJS) $(OBJS09) $(LIBS)
+
+# Simple Bitplane Coding (Decoder)
+SBCd64: $(SRC_DIR)/SBCd.c $(OBJS) $(OBJS09) $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/SBCd64.exe $(SRC_DIR)/SBCd.c $(OBJS) $(OBJS09) $(LIBS)
+
+# Image dependent encododer mix with Simple Bitplane Coding (Encoder)
+BOSC09MixSBCe64: $(SRC_DIR)/BOSC09MixSBCe.c $(OBJS) $(OBJS09) $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BOSC09MixSBCe64.exe $(SRC_DIR)/BOSC09MixSBCe.c $(OBJS) $(OBJS09) $(LIBS)
+
+# Image dependent decododer mix with Simple Bitplane Coding (Encoder)
+BOSC09MixSBCd64: $(SRC_DIR)/BOSC09MixSBCd.c $(OBJS) $(OBJS09) $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BOSC09MixSBCd64.exe $(SRC_DIR)/BOSC09MixSBCd.c $(OBJS) $(OBJS09) $(LIBS)
+
+# L-Infinity Binary Tree Decomposition Encoder
+BITTOCe64: $(SRC_DIR)/BITTOCe.c $(OBJS) $(OBJS09) $(OBJS_DIR)/linf.o $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BITTOCe64.exe $(SRC_DIR)/BITTOCe.c $(OBJS) $(OBJS09) $(OBJS_DIR)/linf.o $(LIBS)
+
+# L-Infinity Binary Tree Decomposition Decoder
+BITTOCd64: $(SRC_DIR)/BITTOCd.c $(OBJS) $(OBJS09) $(OBJS_DIR)/linf.o $(DEPS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/BITTOCd64.exe $(SRC_DIR)/BITTOCd.c $(OBJS) $(OBJS09) $(OBJS_DIR)/linf.o $(LIBS)
+
+
+# Tool to comare two images
+CmpImgs64: $(SRC_DIR)/CmpImgs.c $(OBJS)
+	$(CC) $(CFLAGS3) -o $(BIN_DIR)/CmpImgs64.exe $(SRC_DIR)/CmpImgs.c $(OBJS)
+
+
+$(OBJS_DIR)/bitio.o: $(SRC_DIR)/bitio.h $(SRC_DIR)/bitio.c
+	$(CC) -c $(CFLAGS) -o $(OBJS_DIR)/bitio.o $(SRC_DIR)/bitio.c
+
+$(OBJS_DIR)/arith.o: $(SRC_DIR)/arith.h $(SRC_DIR)/arith.c
+	$(CC) -c $(CFLAGS) -o $(OBJS_DIR)/arith.o $(SRC_DIR)/arith.c
+
+$(OBJS_DIR)/image.o: $(SRC_DIR)/image.h $(SRC_DIR)/image.c
+	$(CC) -c $(CFLAGS2) -o $(OBJS_DIR)/image.o $(SRC_DIR)/image.c
+
+$(OBJS_DIR)/complex.o: $(SRC_DIR)/complex.h $(SRC_DIR)/complex.c
+	$(CC) -c $(CFLAGS2) -o $(OBJS_DIR)/complex.o $(SRC_DIR)/complex.c
+
+$(OBJS_DIR)/matrix.o: $(SRC_DIR)/matrix.h $(SRC_DIR)/matrix.c
+	$(CC) -c $(CFLAGS2) -o $(OBJS_DIR)/matrix.o $(SRC_DIR)/matrix.c
+
+$(OBJS_DIR)/mtype.o: $(SRC_DIR)/mtype.h $(SRC_DIR)/mtype.c
+	$(CC) -c $(CFLAGS2) -o $(OBJS_DIR)/mtype.o $(SRC_DIR)/mtype.c
+
+$(OBJS_DIR)/context95.o: $(SRC_DIR)/context95.h $(SRC_DIR)/context95.c
+	$(CC) -c $(CFLAGS2) -o $(OBJS_DIR)/context95.o $(SRC_DIR)/context95.c
+
+$(OBJS_DIR)/arith_aux.o: $(SRC_DIR)/arith_aux.h $(SRC_DIR)/arith_aux.c
+	$(CC) -c $(CFLAGS) -o $(OBJS_DIR)/arith_aux.o $(SRC_DIR)/arith_aux.c
+
+$(OBJS_DIR)/common.o: $(SRC_DIR)/common.h $(SRC_DIR)/common.c
+	$(CC) -c $(CFLAGS) -o $(OBJS_DIR)/common.o $(SRC_DIR)/common.c
+
+$(OBJS_DIR)/context.o: $(SRC_DIR)/context.h $(SRC_DIR)/context.c
+	$(CC) -c $(CFLAGS) -o $(OBJS_DIR)/context.o $(SRC_DIR)/context.c
+
+$(OBJS_DIR)/sbr.o: $(SRC_DIR)/sbr.h $(SRC_DIR)/sbr.c
+	$(CC) -c $(CFLAGS) -o $(OBJS_DIR)/sbr.o $(SRC_DIR)/sbr.c
+
+$(OBJS_DIR)/linf.o: $(SRC_DIR)/linf.h $(SRC_DIR)/linf.c
+	$(CC) -c $(CFLAGS) -o $(OBJS_DIR)/linf.o $(SRC_DIR)/linf.c
+
+
+clean:
+	/bin/rm -f $(OBJS_DIR)/*.o $(PROGS)
+
+clean-all:
+	/bin/rm -f $(OBJS_DIR)/*.o $(PROGS)
+	clear
