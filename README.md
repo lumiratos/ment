@@ -36,3 +36,24 @@ If you use some tool from MENT, please cite the following publications:
 * [António J. R. Neves](http://sweet.ua.pt/an), [Armando J. Pinho](http://sweet.ua.pt/ap), ["Lossless compression of microarray images using image-dependent finite-context models"](http://dx.doi.org/10.1109/TMI.2008.929095), in [IEEE Transactions on Medical Imaging](http://ieeexplore.ieee.org/xpl/RecentIssue.jsp?punumber=42), volume 28, number 2, pages 194-201, February 2009.
 
 * [António J. R. Neves](http://sweet.ua.pt/an), [Armando J. Pinho](http://sweet.ua.pt/ap), ["Lossless Compression of Microarray Images"](http://dx.doi.org/10.1109/ICIP.2006.31280), in Proceedings of the [IEEE International Conference on Image Processing, ICIP-2006](http://www.icip2006.org), Atlanta, GA, pages 2505-2508, 8-11 October, 2006.
+
+# MICROARRAY DATA SETS #
+The microarray data sets were collected from different publicly available sources however, currently some of this data sets
+are not available in their original location anymore. We decided then to upload them to an alternative public location that we will indicate next.
+* ApoA1 (32 images | 66.4MB | [download](https://drive.google.com/file/d/0BzRzvourNTdhRl93ZGpwcFd3QnM/edit?usp=sharing))
+* Arizona (6 images | 694.9MB | [download](https://drive.google.com/file/d/0BzRzvourNTdhcXlKQ0ViczhzdkU/edit?usp=sharing))
+* IBB (44 images | 1.03GB | [download](https://drive.google.com/file/d/0BzRzvourNTdhcUlSWHdHQzBjNkE/edit?usp=sharing))
+* ISREC (14 images | 26.7MB | [download](https://drive.google.com/file/d/0BzRzvourNTdhMWFIN2dZQmdSb1k/edit?usp=sharing))
+* Omnibus - Low Mode (25 images | 2.5GB | [download](https://drive.google.com/file/d/0BzRzvourNTdhNGVZQ0hPUGZIU2M/edit?usp=sharing))
+* Omnibus - High Mode (25 images | 2.5GB | [download ](https://drive.google.com/file/d/0BzRzvourNTdhRHRqaklRUzFSVnc/edit?usp=sharing))
+* Stanford (40 images | 396MB | [download](https://drive.google.com/file/d/0BzRzvourNTdhdjZZa1cydDVXZWM/edit?usp=sharing))
+* Yeast (109 images | 219MB | [download](https://drive.google.com/file/d/0BzRzvourNTdhWlJpdWZ4azUzNDQ/edit?usp=sharing))
+* YuLou (3 images | 40.7MB | [download](https://drive.google.com/file/d/0BzRzvourNTdhSmZ4MFNwMXVxZVk/edit?usp=sharing))
+		
+# ISSUES #
+At the time, there are no relevant issues detected but if you find one please let me know using the [issues link](https://github.com/lumiratos/ment/issues) at GitHub.
+<!-- The windows decoders (SACOd32.exe and SACOd64.exe) have a bug that will be fixed very soon...
+For other issues please use the [issues link](https://github.com/lumiratos/saco/issues) at GitHub. -->
+
+# COPYRIGHT #
+Copyright (c) 2014 Luís M. O. Matos. See [LICENSE.txt](https://github.com/lumiratos/ment/blob/master/LICENSE.txt) for further details.
