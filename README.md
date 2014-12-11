@@ -1,9 +1,20 @@
 # MENT (Microarray comprEssioN Tools) #
 
 MENT is a set of tools for lossless compression of microarray images. These tools can also be used for other types of images such as medical, RNAi, etc. This set of tools are divided into two categories. One where a bitplane decomposition approach is used and the other one where a binary tree decomposition is used. In what follows, we will describe the set of tools that can be found in MENT:
-* BOSC06 (Bitplane decOmpoSition Compressor 2006) - Lossless compression tool for microarray images introduced by Neves and Pinho in 2006 ([Neves 2006](http://dx.doi.org/10.1109/ICIP.2006.312802)). This tool uses an image-INDEPENDENT context configuration and arithmetic coding.
-* BOSC09 (Bitplane decOmpoSition Compressor 2009) - Lossless compression tool for microarray images introduced by Neves and Pinho in 2009 ([Neves 2009](http://dx.doi.org/10.1109/TMI.2008.929095)). This tool uses an image-DEPENDENT context configuration and arithmetic coding.
-* BOSC09BFS (Bitplane decOmpoSition Compressor 2009 with Backgroud Foreground Separation) - Tool based on method introduced by ([Neves 2009](http://dx.doi.org/10.1109/TMI.2008.929095)) where it was added a segmentation unit as a pre-processing step before the encoding procedure. Results for this tool were first
+
+* **BOSC06** (Bitplane decOmpoSition Compressor 2006) - Lossless compression tool for microarray images introduced by Neves and Pinho in 2006 ([Neves 2006](http://dx.doi.org/10.1109/ICIP.2006.312802)). This tool uses an image-INDEPENDENT context configuration and arithmetic coding.
+
+* **BOSC09** (Bitplane decOmpoSition Compressor 2009) - Lossless compression tool for microarray images introduced by Neves and Pinho in 2009 ([Neves 2009](http://dx.doi.org/10.1109/TMI.2008.929095)). This tool uses an image-DEPENDENT context configuration and arithmetic coding.
+
+* **BOSC09BFS** (Bitplane decOmpoSition Compressor 2009 with Backgroud Foreground Separation) - Tool inspired on method introduced by ([Neves 2009](http://dx.doi.org/10.1109/TMI.2008.929095)) where it was added a segmentation unit as a pre-processing step before the encoding procedure. Results for this tool were first published in [Matos 2010](http://doi.org/10.13140/2.1.3815.5843).
+
+* **BOSC09HC** (Bitplane decOmpoSition Compressor 2009 using Histogram Compaction) - Tool inspired on method introduced by ([Neves 2009](http://dx.doi.org/10.1109/TMI.2008.929095)) where it was added an Histogram Compaction unit in order to remove some redundant bitplanes. This Histogram Compaction is usefull for images that have a reduced number of intensities.
+
+* **BOSC09SBR** (Bitplane decOmpoSition Compressor 2009 using Scalable Bitplane Reduction) - Tool inspired on method introduced by ([Neves 2009](http://dx.doi.org/10.1109/TMI.2008.929095)) where it was added an Scalable Bitplane Reduction unit in order to remove some redundant bitplanes. The Scalable Bitplane Reduction technique was first introduced by [Yoo 1999](http://dx.doi.org/10.1109/ICIP.1999.821655).
+
+* **SBC** (Simple Bitplane Coding) - Tool inspired on several Kikuchi's works ([Kikuchi 2009](http://dx.doi.org/10.1109/PCS.2009.5167351), [Kikuchi 2012](http://doi.org/10.1587/transfun.E95.A.938)). 
+
+* **BOSC09MixSBC** (Bitplane decOmpoSition Compressor 2009 Mixture with Simple Bitplane Coding) - Tool based on a mixture of finite-context models. In this particular case, we only considered two different models. The first one used by Neves and Pinho ([Neves 2009](http://dx.doi.org/10.1109/TMI.2008.929095)) and the other one is based on Simple Bitplane Coding inpired on Kikuchi's work ([Kikuchi 2009](http://dx.doi.org/10.1109/PCS.2009.5167351), [Kikuchi 2012](http://doi.org/10.1587/transfun.E95.A.938)). 
 
 
 # CITE #
