@@ -1,6 +1,6 @@
 # MENT (Microarray comprEssioN Tools) #
 
-MENT is a set of tools for lossless compression of microarray images however, it can be used in other kinds of images such as medical, RNAi, etc. This set of tools is divided into two categories, defined by the decomposition approach used:
+MENT is a set of tools for lossless compression of microarray images however, it can be used in other kind of images such as medical, RNAi, etc. This set of tools is divided into two categories, defined by the decomposition approach used:
 * Bitplane Decomposition
 * Binary-Tree Decomposition
 
