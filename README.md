@@ -158,8 +158,8 @@ are not available in their original location anymore. We decided then to upload 
 
 # CITE #
 If you use some tool from MENT, please cite the following publications:
-* [Luís M. O. Matos](http://sweet.ua.pt/luismatos), [António J. R. Neves](http://sweet.ua.pt/an), [Armando J. Pinho](http://sweet.ua.pt/ap), "Lossy-to-lossless compression of biomedical images based on image decomposition", 
- in Digital Signal Processing, (chapter proposal accepted on December 4, 2014).
+* [Luís M. O. Matos](http://sweet.ua.pt/luismatos), [António J. R. Neves](http://sweet.ua.pt/an), [Armando J. Pinho](http://sweet.ua.pt/ap), ["Lossy-to-lossless compression of biomedical images based on image decomposition"](https://doi.org/10.5772/60650),
+in [Applications of Digital Signal Processing through Practical Approach](http://www.intechopen.com/books/applications-of-digital-signal-processing-through-practical-approach), Sudhakar Radhakrishnan (Editor), InTech, pp. 125-158, October 2015.
 
 * [Luís M. O. Matos](http://sweet.ua.pt/luismatos), [António J. R. Neves](http://sweet.ua.pt/an), [Armando J. Pinho](http://sweet.ua.pt/ap), ["A rate-distortion study on microarray image compression"](http://doi.org/10.13140/2.1.3431.2969), in Proceedings of the 20th Portuguese Conference on Pattern Recognition, [RecPad 2014](http://recpad2014.di.ubi.pt), Covilhã, Portugal, October 2014
 
